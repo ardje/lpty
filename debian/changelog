@@ -1,0 +1,6 @@
+lua-lpty (1.0.1-1) unstable; urgency=low
+
+  * Initial release. (Closes: #719795)
+  * Patch to fix test (used to fail if redirected) 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 15 Aug 2013 15:00:29 +0200

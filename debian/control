@@ -1,0 +1,35 @@
+Source: lua-lpty
+Section: interpreters
+Priority: optional
+Maintainer: Enrico Tassi <gareuselesinge@debian.org>
+Build-Depends: debhelper (>= 9),  dh-lua
+Standards-Version: 3.9.3
+Homepage: http://www.tset.de/lpty/
+Vcs-Git: git://git.debian.org/git/pkg-lua/lua-lpty.git
+Vcs-Browser: http://git.debian.org/?p=pkg-lua/lua-lpty.git
+
+Package: lua-lpty
+Architecture: any
+Multi-Arch: same
+Pre-Depends: multiarch-support
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: ${lua:Provides}
+XB-Lua-Versions: ${lua:Versions}
+Description: PTY library for the Lua language
+ This package gives the Language access to the pseudo terminal
+ interface.
+
+Package: lua-lpty-dev
+Section: libdevel
+Multi-Arch: same
+Pre-Depends: multiarch-support
+Architecture: any
+Depends: lua-lpty (= ${binary:Version}), ${misc:Depends}
+Provides: ${lua:Provides}
+XB-Lua-Versions: ${lua:Versions}
+Description: PTY library for the Lua language - development files
+ This package contains the development files of the lpty library,
+ useful to create a statically linked binary (like a C application or a
+ standalone Lua interpreter).
+ .
+ Documentation is also shipped within this package.

@@ -1,0 +1,20 @@
+From: Enrico Tassi <gareuselesinge@debian.org>
+Date: Fri, 23 Aug 2013 16:22:45 +0200
+Subject: Fix test
+
+---
+ samples/lptytest.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/samples/lptytest.lua b/samples/lptytest.lua
+index b9256d7..ba19025 100644
+--- a/samples/lptytest.lua
++++ b/samples/lptytest.lua
+@@ -196,6 +196,7 @@ end
+ -- 16
+ announce("sending data to no_local_echo pty then checking for data, should return false")
+ ok, val = pcall(lpty.send, pn, "abc\n")
++while pn:readok() do pn:read() end
+ if not ok then
+ 	fail(tostring(val))
+ else
