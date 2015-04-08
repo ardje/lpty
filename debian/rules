@@ -2,3 +2,7 @@
 
 %:
 	dh $@ --buildsystem=lua --with lua
+
+override_dh_auto_configure:
+	$(MAKE) expectsrc.inc	
+	dh_auto_configure -O--buildsystem=lua -O--with lua
