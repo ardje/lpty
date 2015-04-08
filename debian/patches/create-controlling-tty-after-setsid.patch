@@ -1,0 +1,30 @@
+Description: Set pty as controlling tty after setsid
+ After setsid, the session leader does not have a controlling tty yet.
+ Set the created PTY as the controlling tty.
+Author: Ard van Breemen <ard@kwaak.net>
+Last-Update: 2015-04-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/lpty.c
++++ b/lpty.c
+@@ -19,6 +19,7 @@
+ #include <sys/wait.h>
+ #include <sys/select.h>
+ #include <sys/time.h>
++#include <sys/ioctl.h>
+ #include <termios.h>
+ 
+ extern char** environ;
+@@ -629,6 +630,12 @@ static int lpty_startproc(lua_State *L)
+ 				exit(EXIT_FAILURE);
+ 				/* we need to terminate here! */
+ 			}
++			
++			if(ioctl(ttyfd,TIOCSCTTY,1)) {
++				fprintf(stderr, "lpty failed to set the controlling tty.");
++				exit(EXIT_FAILURE);
++			}
++
+ 
+ 			/* reset SIGCHLD handler then start our process */
+ 			_lpty_set_sigchld_handler(SIG_DFL);
