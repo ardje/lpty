@@ -1,3 +1,9 @@
+lua-lpty (1.1-1ut-2) unstable; urgency=low
+
+  * ubuntu trusty
+
+ -- Ard van Breemen <ard@kwaak.net>  Tue, 26 May 2015 17:49:26 +0200
+
 lua-lpty (1.1-1-2) unstable; urgency=low
 
   * Add ioctl to set controlling tty to pty
